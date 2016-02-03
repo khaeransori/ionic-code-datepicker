@@ -1,0 +1,30 @@
+{
+  "name": "code-datepicker",
+  "version": "1.0.0",
+  "authors": [
+    "Khaer Ansori <khaer.ansori@gmail.com>"
+  ],
+  "description": "Flexible datepicker for ionic application",
+  "main": "./dist/ionic-datepicker.min.js",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "ionic",
+    "datepicker",
+    "ionic-datepicker",
+    "modal-datepicker"
+  ],
+  "license": "MIT",
+  "homepage": "github.com/khaeransori",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ionic": ">=1.0.0"
+  }
+}

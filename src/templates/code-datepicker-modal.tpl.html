@@ -1,0 +1,72 @@
+<ion-modal-view class="code-datepicker">
+    <ion-header-bar class="bar-assertive">
+        <h1 class="title">{{datepicker.titleLabel}}</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="code-datepicker-modal" data-ng-if="datepicker.showLoader || datepicker.showMonthModal || datepicker.showYearModal">
+            <div class="code-datepicker-close-button icon ion-ios-close-outline" data-ng-if="datepicker.showMonthModal || datepicker.showYearModal" data-ng-click="closeMonthYearModals()"></div>
+            <ion-spinner icon="spiral" class="spinner-dark code-datepicker-loader" data-ng-if="datepicker.showLoader"></ion-spinner>
+
+            <div class="code-datepicker-modal-content" data-ng-if="datepicker.showMonthModal">
+                <div class="code-datepicker-button code-datepicker-select-year" data-ng-click="openYearModal()">
+                    {{currentMonth.getFullYear()}}
+                </div>
+
+                <div class="code-datepicker-modal-item" data-ng-repeat="m in months track by $index" data-ng-class="{'code-datepicker-modal-item-active': currentMonth.getMonth() == $index}" data-ng-click="selectMonth($index)">
+                    {{m.substr(0,3)}}
+                </div>
+            </div>
+
+            <div class="code-datepicker-modal-content" data-ng-if="datepicker.showYearModal">
+                <ion-slide-box show-pager="false" active-slide="selectedYearSlide">
+                    <ion-slide data-ng-repeat="slide in yearSlides">
+                        <div class="code-datepicker-modal-item" data-ng-repeat="year in slide.years" data-ng-click="selectYear(year)" data-ng-class="{'code-datepicker-modal-item-active': currentMonth.getFullYear() == year}">
+                            {{year}}
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <span class="code-datepicker-navigation-arrow ion-ios-arrow-back" data-ng-click="previousMonth()"></span>
+            </div>
+
+            <div class="col text-center">
+                <div class="code-datepicker-button" data-ng-click="openMonthModal()">
+                    {{months[currentMonth.getMonth()]}} {{currentMonth.getFullYear()}}
+                </div>
+            </div>
+
+            <div class="col-25 text-right">
+                <span class="code-datepicker-navigation-arrow ion-ios-arrow-forward" data-ng-click="nextMonth()"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col code-datepicker-week" data-ng-repeat="dayOfTheWeek in daysOfTheWeek track by $index">
+                {{ dayOfTheWeek }}
+            </div>
+        </div>
+
+        <div class="row" data-ng-repeat="week in month" on-swipe-right="swipeRight()" on-swipe-left="swipeLeft()">
+            <div class="col" data-ng-repeat="day in week.days" data-ng-click="selectDate(day.fullDate, day.isDisabled)">
+                <div class="code-datepicker-day" data-ng-style="{'background-color': day.highlight.color, 'color': day.highlight.textColor}" data-ng-class="{'code-datepicker-current-day': day.isToday, 'code-datepicker-different-month': !day.isCurrentMonth, 'code-datepicker-active-day': sameDate(day.fullDate, selectedDate), 'code-datepicker-disable-day': day.isDisabled}">
+                    {{day.date}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row" data-ng-if="!datepicker.calendarMode">
+            <div class="col">
+                <span class="code-datepicker-selection-button ion-ios-calendar-outline" data-ng-if="datepicker.showTodayButton" data-ng-click="selectToday()"></span>
+            </div>
+
+            <div class="col text-right">
+                <span class="code-datepicker-selection-button ion-ios-close-outline" data-ng-if="!datepicker.hideCancelButton" data-ng-click="closeModal()"></span>
+                <span class="code-datepicker-selection-button ion-ios-checkmark" data-ng-if="!datepicker.hideSetButton" data-ng-click="setDate()"></span>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

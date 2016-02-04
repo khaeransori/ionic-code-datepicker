@@ -33,7 +33,7 @@ gulp.task('css2js', function() {
 });
 
 gulp.task('minify-all', ['delete-dist', 'html2js', 'sass2css', 'css2js'], function() {
-    return gulp.src(['./dist/*.js', './src/js/*.js'])
+    return gulp.src(['./dist/*.js', './src/js/code-datepicker.services.js', './src/js/code-datepicker.js'])
         .pipe(concat('code-datepicker.min.js'))
         .pipe(ngAnnotate())
         .pipe(uglify())

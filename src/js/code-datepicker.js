@@ -5,6 +5,7 @@
     .module('code-datepicker', ['ionic', 'code-datepicker.templates', 'code-datepicker.service'])
     .directive('codeDatepicker', codeDatepicker);
 
+  codeDatepicker.$inject = ['$ionicGesture', '$ionicModal', 'codeDatepickerService'];
   /* @ngInject */
   function codeDatepicker($ionicGesture, $ionicModal, codeDatepickerService) {
     function initDatepicker(scope) {

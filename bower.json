@@ -5,7 +5,7 @@
     "Khaer Ansori <khaer.ansori@gmail.com>"
   ],
   "description": "Flexible datepicker for ionic application",
-  "main": "./dist/ionic-datepicker.min.js",
+  "main": "./dist/code-datepicker.min.js",
   "moduleType": [
     "node"
   ],

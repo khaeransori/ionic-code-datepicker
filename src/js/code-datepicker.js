@@ -71,6 +71,8 @@
       var parameters = {};
 
       scope.datepicker = {
+        showHeaderBar: false,
+        headerBarClass: undefined,
         titleLabel: undefined,
         showLoader: false,
         showMonthModal: false,
@@ -83,6 +85,8 @@
 
       parameters = initDatepicker(scope);
 
+      scope.datepicker.showHeaderBar = parameters.showHeaderBar;
+      scope.datepicker.headerBarClass = parameters.headerBarClass;
       scope.datepicker.titleLabel = parameters.titleLabel;
       scope.datepicker.calendarMode = parameters.calendarMode;
       scope.datepicker.hideCancelButton = parameters.hideCancelButton;

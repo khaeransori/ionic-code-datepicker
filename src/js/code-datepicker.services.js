@@ -149,7 +149,9 @@
                 hideSetButton = false,
                 highlights = [],
                 disableDaysOfWeek = [],
-                titleLabel;
+                showHeaderBar = true,
+                headerBarClass = 'bar-assertive',
+                titleLabel = 'Title';
 
             /* MONDAY FIRST */
             if (angular.isDefined(scope.datepickerObject) && angular.isDefined(scope.datepickerObject.mondayFirst)) {
@@ -246,10 +248,16 @@
                 disableDaysOfWeek = scope.datepickerObject.disableDaysOfWeek;
             }
 
+            if (angular.isDefined(scope.datepickerObject.showHeaderBar)) {
+                showHeaderBar = scope.datepickerObject.showHeaderBar;
+            }
+
+            if (angular.isDefined(scope.datepickerObject.headerBarClass)) {
+                headerBarClass = scope.datepickerObject.headerBarClass;
+            }
+
             if (angular.isDefined(scope.datepickerObject.titleLabel)) {
                 titleLabel = scope.datepickerObject.titleLabel;
-            } else {
-                titleLabel = 'Title';
             }
 
             return {
@@ -270,6 +278,8 @@
                 highlights: highlights,
                 disableDaysOfWeek: disableDaysOfWeek,
                 callback: callback,
+                showHeaderBar: showHeaderBar,
+                headerBarClass: headerBarClass,
                 titleLabel: titleLabel
             };
         };
